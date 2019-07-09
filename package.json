@@ -1,0 +1,62 @@
+{
+  "name": "radialbars-test",
+  "version": "0.0.1",
+  "description": "Boilerplate project to run radialbars UX feature tests with Cucumber",
+  "homepage": "https://github.com/christrees/radialbars-test",
+  "scripts": {
+    "clear": "rm -R screenshots errorShots",
+    "docs": "cd docs && make html && cd ..",
+    "test": "yarn run test:features;",
+    "test:po": "DEBUG=false yarn run wdio wdio.PageObjectTest.conf.js",
+    "debug:po": "DEBUG=true yarn run wdio wdio.PageObjectTest.conf.js",
+    "test:fcheck": "yarn run wdio --spec ./src/features/githubSearch.feature",
+    "test:features": "wdio wdio.conf.js; wdio_ret=$?; forever stopall; exit $wdio_ret",
+    "test:unit": "jest --config=jest.json",
+    "test:validate": "eslint 'src/**/*.js' 'test/**/*.js!(setup.js)'",
+    "wip": "yarn run wdio --spec ./src/features/drpux-iso.feature"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christrees/radialbars-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/christrees/radialbars-test/issues"
+  },
+  "keywords": [
+    "drp",
+    "radialbars-test",
+    "webdriverio",
+    "cucumber",
+    "selenium"
+  ],
+  "author": "Chris Trees <christrees@gmail.com>",
+  "contributors": [
+    "Chris Trees <christrees@yahoo.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-es2015": "~6.24.0",
+    "babel-register": "~6.26.0",
+    "chai": "~4.1.2",
+    "chai-webdriver": "^1.2.0",
+    "chai-webdriverio": "^0.4.3",
+    "selenium-webdriver": "^3.6.0",
+    "wdio-cucumber-framework": "^1.0.3",
+    "wdio-mocha-framework": "^0.5.12",
+    "wdio-phantomjs-service": "~0.2.2",
+    "wdio-selenium-standalone-service": "~0.0.9",
+    "wdio-spec-reporter": "^0.1.3",
+    "wdio-visual-regression-service": "^0.8.0",
+    "webdriverio": "4.9.8"
+  },
+  "devDependencies": {
+    "babel-jest": "~22.0.0",
+    "babel-polyfill": "~6.26.0",
+    "eslint": "~4.14.0",
+    "eslint-config-airbnb-base": "~12.1.0",
+    "eslint-plugin-import": "~2.8.0",
+    "forever": "~0.15.3",
+    "http-server": "~0.10.0",
+    "jest": "~22.0.0"
+  }
+}
