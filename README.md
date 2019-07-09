@@ -1,6 +1,8 @@
 # radialbars-test
 radialbars UX Feature Testing Automation
 
+[![Build Status](https://travis-ci.org/christrees/radialbars-test.svg?branch=master)](https://travis-ci.org/christrees/radialbars-test)
+
 ***
 
 radialbars-test project to run WebdriverIO tests with [Cucumber](https://cucumber.io/) and follow [TTD](https://en.wikipedia.org/wiki/Test-driven_development) and [BDD](http://en.wikipedia.org/wiki/Behavior-driven_development) to create a [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for [radialbars](https://github.com/christrees/radialbars)
