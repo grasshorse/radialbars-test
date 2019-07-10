@@ -38,25 +38,50 @@ that means that you write down what's supposed to happen in a real language. All
 directory. They should demonstrate, how tests could look like. Just create a new file and write your first
 test.
 
-__loadgame.feature__
+__gamePlay.feature__
 ```gherkin
-Feature: loadgame
+Feature: radialbars game play
     As a Developer in Test
-    I want to load the radialbars application
-    So that the UX can be automatically tested
+    I want to play radialbars
+    So that I can verify game play in my feature tests
 
-Scenario: open URL
+Scenario: open game app url
     Given I open the url "https://christrees.com/radialbars/"
     Then  I expect that the url is "https://christrees.com/radialbars/"
     And   I expect that the title is "rb-test"
+#    When  I pause for 10000ms
 
-Scenario: Another test
-    Given ...
+Scenario: Start Game
+    Given I open the url "https://christrees.com/radialbars/"
+    Then  I expect that the url is "https://christrees.com/radialbars/"
+    And   there is an element ".hub" on the page
+    And   the element "text" matches the text "Click to Start"
+    When  I click on the element ".hub"
+    Then  I expect that element ".bar" does appear exactly "1" times
+    And   the element "text" matches the text "0"
+    When  I pause for 5000ms
+    Then  the element "text" matches the text "Game Over"
+
+#@WIP @Pending
+Scenario: Click bar
+    Given I open the url "https://christrees.com/radialbars/"
+    And   there is an element ".hub" on the page
+    And   the element "text" matches the text "Click to Start"
+    When  I click on the element ".hub"
+    Then  I expect that element ".bar" does appear exactly "1" times
+    And   I expect that element ".bar" becomes visible
+    And   I pause for 2000ms
+    When  I move and click the radialbars element ".bar"
+    And   I pause for 100ms
+    Then  the element "text" matches the text "+ 5"
+    And   I pause for 1000ms
+    Then  the element "text" matches the text "5"
+    When  I pause for 5000ms
+    Then  the element "text" matches the text "Game Over"
 
 ```
 
-This test opens the browser and navigates them to google.com to check if the title contains the search
-query after doing a search. As you can see, it is pretty simple and understandable for everyone.
+This test opens the browser and navigates them to https://christrees.com/radialbars/ to check if the title is rb-test. As you can see, it is written as pretty simple text.  This is Gherkin.  The purpose of using Gherkin to the creation, validation and maintainance of a Domain Specific Language (DSL).  As development proceeds, use of the DSL will capture, validate and maintain a consistant discription of the language used.  This process helps the various stakeholders (users, developers, writers, artist) maintain the User Experience (UX).
 
 # Configurations
 
